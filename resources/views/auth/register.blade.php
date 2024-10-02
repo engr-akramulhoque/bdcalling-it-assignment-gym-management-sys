@@ -2,14 +2,6 @@
 
 @section('content')
     <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
-        <div class="text-center">
-            <div class="card pt-3">
-                <a href="{{ route('home') }}" class="card-title btn"><img src="{{ asset('static/assets/img/logo.png') }}"
-                        alt="">
-                    <Span class="font-24 p-3 mt-4 text-center">AREIA STORE</Span></a>
-            </div>
-        </div>
-
         <div class="card card-primary">
             <!-- Session Status -->
             @if (session()->has('status'))
@@ -54,6 +46,17 @@
                             value="{{ old('email') }}" autofocus>
                     </div>
 
+                    <!-- Role -->
+                    <div class="form-group">
+                        <label for="role">Choese Role</label>
+                        <select id="role" class="form-control" name="role" tabindex="1">
+                            <option value="">Select Role</option>
+                            @foreach ($roles as $item)
+                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
                     <!-- Password -->
                     <div class="form-group">
                         <label for="password" class="control-label">Password</label>
@@ -82,25 +85,10 @@
                         </button>
                     </div>
                 </form>
-                {{-- <div class="text-center mt-4 mb-3">
-                <div class="text-job text-muted">Login With Social</div>
-            </div>
-            <div class="row sm-gutters">
-                <div class="col-6">
-                    <a class="btn btn-block btn-social btn-facebook">
-                        <span class="fab fa-facebook"></span> Facebook
-                    </a>
+                <div class="text-muted text-center">
+                    Already have an account? <a href="{{ route('login') }}">Login</a>
                 </div>
-                <div class="col-6">
-                    <a class="btn btn-block btn-social btn-twitter">
-                        <span class="fab fa-twitter"></span> Twitter
-                    </a>
-                </div>
-            </div> --}}
             </div>
-        </div>
-        <div class="mt-5 text-muted text-center">
-            Already have an account? <a href="{{ route('login') }}">Login</a>
         </div>
     </div>
 @endsection
