@@ -1,0 +1,1 @@
+helo {{ auth()->user()->name }}
