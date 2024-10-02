@@ -11,14 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_infos', function (Blueprint $table) {
+        Schema::create('class_times', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->longText('bio')->nullable();
-            $table->date('dob')->nullable();
-            $table->string('phone')->nullable();
+            $table->unsignedBigInteger('trainer_id');
+            $table->date('date');
+            $table->time('start_time');
+            $table->time('end_time');
+            $table->integer('capacity');
+            $table->foreign('trainer_id')->references('id')->on('trainers')->onDelete('cascade');
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_infos');
+        Schema::dropIfExists('class_times');
     }
 };
