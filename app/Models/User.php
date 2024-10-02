@@ -30,10 +30,16 @@ class User extends Authenticatable implements MustVerifyEmail
         'is_superadmin',
     ];
 
-    // getting user info from relationships
-    public function userInfo()
+    // getting trainer from relationships
+    public function trainer()
     {
-        return $this->hasOne(UserInfo::class, 'id');
+        return $this->hasOne(Trainer::class, 'user_id');
+    }
+
+    // getting booking from relationships
+    public function booking()
+    {
+        return $this->hasMany(Booking::class, 'user_id');
     }
 
     /**
