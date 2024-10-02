@@ -100,39 +100,6 @@
                     </div>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-header">
-                    <h4>Quick Links</h4>
-                </div>
-                <div class="card-body">
-                    <ul class="list-unstyled user-progress list-unstyled-border list-unstyled-noborder">
-                        <li class="media">
-                            <div class="media-body">
-                                <div class="media-title">Contact</div>
-                            </div>
-                            <div class="p-t-1">
-                                <a href="">Contact</a>
-                            </div>
-                        </li>
-                        <li class="media">
-                            <div class="media-body">
-                                <div class="media-title">Support</div>
-                            </div>
-                            <div class="p-t-1">
-                                <a href="">Support</a>
-                            </div>
-                        </li>
-                        <li class="media">
-                            <div class="media-body">
-                                <div class="media-title">Call</div>
-                            </div>
-                            <div class=" p-t-1">
-                                <a href="">+008 1122 12112</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
         </div>
         <div class="col-12 col-md-12 col-lg-8">
             <div class="card">
