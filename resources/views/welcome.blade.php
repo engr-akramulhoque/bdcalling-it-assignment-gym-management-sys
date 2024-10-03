@@ -57,24 +57,47 @@
     <!-- Classes Section -->
     <section class="py-16 bg-white" id="classes">
         <div class="container mx-auto text-center">
-            <h3 class="text-3xl font-bold mb-8">Our Classes</h3>
+            <h3 class="text-3xl font-bold mb-8">Our Available Classes</h3>
             <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                <div class="bg-gray-100 p-6 rounded-lg shadow-md">
-                    <h4 class="text-xl font-bold mb-4">Yoga</h4>
-                    <p class="mb-4">Relax your mind and body with our calming yoga sessions.</p>
-                    <a href="#" class="text-red-500 hover:text-red-600">Learn More</a>
-                </div>
-                <div class="bg-gray-100 p-6 rounded-lg shadow-md">
-                    <h4 class="text-xl font-bold mb-4">HIIT</h4>
-                    <p class="mb-4">Boost your cardio and strength with high-intensity interval training.</p>
-                    <a href="#" class="text-red-500 hover:text-red-600">Learn More</a>
-                </div>
-                <div class="bg-gray-100 p-6 rounded-lg shadow-md">
-                    <h4 class="text-xl font-bold mb-4">Weight Training</h4>
-                    <p class="mb-4">Build muscle with personalized weight training programs.</p>
-                    <a href="#" class="text-red-500 hover:text-red-600">Learn More</a>
-                </div>
+                @forelse ($classes as $item)
+                    <div
+                        class="bg-white border border-gray-200 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                        <h4 class="text-2xl font-semibold text-gray-800 mb-3">Yoga</h4>
+                        <p class="text-gray-600 mb-4">Trainer:
+                            {{ $item->trainer?->user?->firstname . ' ' . $item->trainer?->user?->lastname }}</p>
+
+                        <div class="mb-4">
+                            <span class="block text-sm text-gray-500">Date</span>
+                            <span class="text-lg font-medium text-gray-900">{{ $item->date }}</span>
+                        </div>
+
+                        <div class="flex justify-center items-center mb-4">
+                            <div class="mx-3 px-2">
+                                <span class="block text-sm text-gray-500">Start Time</span>
+                                <span class="text-lg font-medium text-gray-900">{{ $item->start_time }}</span>
+                            </div>
+                            <div>
+                                <span class="block text-sm text-gray-500">End Time</span>
+                                <span class="text-lg font-medium text-gray-900">{{ $item->end_time }}</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <span class="block text-sm text-gray-500">Capacity</span>
+                            <span class="text-lg font-medium text-gray-900">{{ $item->capacity }}</span>
+                        </div>
+
+                        <a href="{{ route('session.checkout', $item->id) }}"
+                            class="inline-block bg-red-500 text-white py-2 px-4 rounded-full text-center hover:bg-red-600 transition-colors duration-300 ease-in-out">Book
+                            Now</a>
+                    </div>
+                @empty
+                    <div class="grid md:grid-cols-1">
+                        <span class="mx-auto text-red-500">No classes found. Please check back later.</span>
+                    </div>
+                @endforelse
             </div>
+
         </div>
     </section>
 
