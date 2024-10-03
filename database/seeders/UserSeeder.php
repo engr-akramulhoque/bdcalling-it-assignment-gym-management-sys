@@ -12,6 +12,17 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+        $user1 = User::factory()->create([
+            'firstname' => 'Trainee',
+            'lastname' => 'User',
+            'email' => 'trainee@gmail.com',
+            'password' => bcrypt('password'),
+            'email_verified_at' => now(),
+            'status' => true,
+            'is_trainee' => true,
+            'is_superadmin' => false,
+        ]);
+
         $user = User::factory()->create([
             'firstname' => 'Super',
             'lastname' => 'User',
@@ -20,7 +31,7 @@ class UserSeeder extends Seeder
             'email_verified_at' => now(),
             'status' => true,
             'is_superadmin' => true,
-            'is_customer' => false,
+            'is_trainee' => false,
         ]);
 
         $user->assignRole('administration');

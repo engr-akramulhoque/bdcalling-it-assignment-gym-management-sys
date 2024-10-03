@@ -32,19 +32,28 @@ class RegisteredUserController extends Controller
      */
     public function store(RegisterNewUserRequest $request): RedirectResponse
     {
+
         $user = User::create([
             'firstname' => $request->firstname,
             'lastname' => $request->lastname,
             'email' => $request->email,
             'password' =>  Hash::make($request->password),
             'terms_conditions' => $request->terms_conditions,
-            'is_customer' => true,
+            'is_trainee' => $request->role === 'trainee' ? true : false,
+            'is_superadmin' => false,
         ]);
+
+        if ($request->role !== 'trainee') {
+            $user->assignRole($request->role);
+        }
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        if (!$request->user()->is_trainee) {
+            return redirect()->intended(route('dashboard', absolute: false));
+        }
+        return redirect()->intended(route('trainee.dashboard', absolute: false));
     }
 }

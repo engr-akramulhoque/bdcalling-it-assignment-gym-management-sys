@@ -30,7 +30,10 @@ class AuthenticatedSessionController extends Controller
 
         notify()->success("You are logged in", "Success", "topRight");
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        if (!$request->user()->is_trainee) {
+            return redirect()->intended(route('dashboard', absolute: false));
+        }
+        return redirect()->intended(route('trainee.dashboard', absolute: false));
     }
 
     /**

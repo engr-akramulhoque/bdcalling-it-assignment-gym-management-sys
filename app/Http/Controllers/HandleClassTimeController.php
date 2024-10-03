@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreSessionRequest;
+use App\Http\Requests\UpdateSessionRequest;
 use App\Models\ClassTime;
 use App\Models\Trainer;
 use Illuminate\Http\Request;
@@ -54,17 +55,30 @@ class HandleClassTimeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ClassTime $classTime)
+    public function edit($id)
     {
-        //
+        $session = ClassTime::find($id);
+        $trainers = Trainer::query()->get();
+
+        return view('app.session.edit', [
+            'session' => $session,
+            'trainers' => $trainers,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ClassTime $classTime)
+    public function update(UpdateSessionRequest $request, $id)
     {
-        //
+        $classTime = ClassTime::find($id)->update($request->validated());
+
+        if ($classTime) {
+            notify()->success('Session has been updated successfully.', 'topRight');
+            return to_route('class.index');
+        }
+        notify()->error('Unable to update this record', 'topRight');
+        return to_route('class.index');
     }
 
     /**
