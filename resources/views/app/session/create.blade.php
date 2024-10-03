@@ -17,7 +17,8 @@
                             <label>Trainer</label>
                             <select name="trainer_id" id="trainer_id" class="form-control">
                                 @foreach ($trainers as $trainer)
-                                    <option value="{{ $trainer->id }}">{{ $trainer->name }}</option>
+                                    <option value="{{ $trainer->id }}">{{ $trainer->firstname . ' ' . $trainer->lastname }}
+                                    </option>
                                 @endforeach
                             </select>
                             @error('trainer_id')

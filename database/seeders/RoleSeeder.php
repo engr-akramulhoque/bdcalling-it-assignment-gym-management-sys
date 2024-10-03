@@ -14,6 +14,17 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
+        $role1 = Role::create([
+            'name' => 'trainer',
+        ]);
+        $role1->givePermissionTo([
+            'classes',
+            'view class',
+            'create class',
+            'edit class',
+            'delete class',
+        ]);
+
         $role = Role::create([
             'name' => 'administration',
         ]);

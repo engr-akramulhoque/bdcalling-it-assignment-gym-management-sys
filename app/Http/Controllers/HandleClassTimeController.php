@@ -6,7 +6,7 @@ use App\Http\Requests\StoreSessionRequest;
 use App\Http\Requests\UpdateSessionRequest;
 use App\Models\ClassTime;
 use App\Models\Trainer;
-use Illuminate\Http\Request;
+use App\Models\User;
 
 class HandleClassTimeController extends Controller
 {
@@ -26,7 +26,7 @@ class HandleClassTimeController extends Controller
      */
     public function create()
     {
-        $trainers = Trainer::query()->get();
+        $trainers = User::role('trainer')->get(['id', 'firstname', 'lastname']);
 
         return view('app.session.create', [
             'trainers' => $trainers,
@@ -58,7 +58,7 @@ class HandleClassTimeController extends Controller
     public function edit($id)
     {
         $session = ClassTime::find($id);
-        $trainers = Trainer::query()->get();
+        $trainers = User::role('trainer')->get();
 
         return view('app.session.edit', [
             'session' => $session,

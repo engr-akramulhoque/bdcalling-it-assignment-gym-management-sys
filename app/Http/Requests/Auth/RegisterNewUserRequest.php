@@ -26,6 +26,7 @@ class RegisterNewUserRequest extends FormRequest
         return [
             'firstname' => 'required|string|max:25',
             'lastname' => 'required|string|max:25',
+            'dob' => 'required|date',
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', 'min:8', Rules\Password::defaults()],
             'terms_conditions' => 'required',

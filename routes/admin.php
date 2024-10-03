@@ -6,6 +6,8 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ViewTraineeController;
+use App\Http\Controllers\ViewTrainerController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function () {
@@ -20,6 +22,10 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::get('/permissions', [PermissionController::class, 'index'])->name('permissions.index')->middleware('permission:view permission');
+
+    Route::get('/trainee/list', ViewTraineeController::class)->name('trainee.list')->middleware('permission:view trainee');
+
+    Route::get('/trainer/list', ViewTrainerController::class)->name('trainer.list')->middleware('permission:view trainer');
 
     // Role management routes
     Route::middleware('permission:roles')->name('roles.')->group(function () {
