@@ -44,6 +44,8 @@ class PermissionSeeder extends Seeder
         Permission::firstOrCreate(['name' => 'delete booking']);
 
         // permissions section
+        Permission::firstOrCreate(['name' => 'view trainee']);
+        Permission::firstOrCreate(['name' => 'view trainer']);
         Permission::firstOrCreate(['name' => 'view permission']);
     }
 }

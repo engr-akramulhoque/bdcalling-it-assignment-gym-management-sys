@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CheckAvailableSessionTimeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -13,3 +14,5 @@ Route::middleware(['auth', 'trainee'])->group(function () {
         return view('frontend.dashboard');
     })->name('trainee.dashboard');
 });
+
+Route::post('/class/check-availability', CheckAvailableSessionTimeController::class)->name('class.check_availability');

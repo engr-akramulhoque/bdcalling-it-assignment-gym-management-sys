@@ -17,7 +17,9 @@
                             <label>Trainer</label>
                             <select name="trainer_id" id="trainer_id" class="form-control">
                                 @foreach ($trainers as $trainer)
-                                    <option value="{{ $trainer->id }}">{{ $trainer->name }}</option>
+                                    <option value="{{ $trainer->trainer->id }}">
+                                        {{ $trainer->firstname . ' ' . $trainer->lastname }}
+                                    </option>
                                 @endforeach
                             </select>
                             @error('trainer_id')
@@ -70,13 +72,15 @@
             </div>
         </div>
     </div>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         document.getElementById('end_time').addEventListener('change', function() {
             const startTime = document.getElementById('start_time').value;
             const endTime = this.value;
             const startTimeError = document.getElementById('start_time_error');
             const endTimeError = document.getElementById('end_time_error');
+            const trainerId = document.getElementById('trainer_id').value;
+            const date = document.querySelector('input[name="date"]').value;
 
             // Reset error messages
             startTimeError.textContent = '';
@@ -86,9 +90,26 @@
             if (startTime && endTime && startTime >= endTime) {
                 startTimeError.textContent = 'Start time cannot be after or equal to the end time';
                 endTimeError.textContent = 'End time must be after the start time';
+            } else {
+                // Perform an AJAX request to check if this time range is available
+                $.ajax({
+                    url: "{{ route('class.check_availability') }}", // Define a route for checking availability
+                    method: "POST",
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        trainer_id: trainerId,
+                        date: date,
+                        start_time: startTime,
+                        end_time: endTime
+                    },
+                    success: function(response) {
+                        if (!response.available) {
+                            endTimeError.textContent =
+                                'This time slot is already taken. Please choose a different time.';
+                        }
+                    }
+                });
             }
         });
     </script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script></script>
 @endsection

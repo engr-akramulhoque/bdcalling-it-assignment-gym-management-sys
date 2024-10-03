@@ -51,11 +51,18 @@
                         <label for="role">Choese Role</label>
                         <select id="role" class="form-control" name="role" tabindex="1">
                             <option value="">Select Role</option>
-                            <option value="trainee">Trainee</option>
+                            <option value="trainee">trainee</option>
                             @foreach ($roles as $item)
                                 <option value="{{ $item->name }}">{{ $item->name }}</option>
                             @endforeach
                         </select>
+                    </div>
+
+                    <!-- dob -->
+                    <div class="form-group">
+                        <label for="dob">Date of Birth</label>
+                        <input id="dob" type="date" class="form-control" name="dob" tabindex="1"
+                            value="{{ old('dob') }}" autofocus>
                     </div>
 
                     <!-- Password -->

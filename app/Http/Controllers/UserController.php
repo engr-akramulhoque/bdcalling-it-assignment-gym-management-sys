@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRegisterRequest;
 use App\Http\Requests\UserUpdateRequest;
+use App\Models\Trainer;
 use App\Models\User;
-use App\Models\UserInfo;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 
@@ -14,7 +14,7 @@ class UserController extends Controller
     // get users
     public function index()
     {
-        $users = User::where('status', true)->latest()->get();
+        $users = User::where('status', true)->where('is_trainee', false)->latest()->get();
         return view('app.users.index', compact('users'));
     }
 
@@ -33,11 +33,12 @@ class UserController extends Controller
                 // create user
                 $user = User::create(array_merge($request->validated(), ['status' => true]));
 
-                // assing userinfo instance
-                UserInfo::create([
+                // assign user info instance
+                Trainer::create([
                     "user_id" => $user->id,
                     "dob" => $request->dob,
                 ]);
+
                 // assign role
                 $user->assignRole($request->role);
             });

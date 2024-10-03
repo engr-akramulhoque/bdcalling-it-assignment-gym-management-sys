@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 use Spatie\Permission\Models\Role;
@@ -33,22 +34,35 @@ class RegisteredUserController extends Controller
     public function store(RegisterNewUserRequest $request): RedirectResponse
     {
 
-        $user = User::create([
-            'firstname' => $request->firstname,
-            'lastname' => $request->lastname,
-            'email' => $request->email,
-            'password' =>  Hash::make($request->password),
-            'terms_conditions' => $request->terms_conditions,
-            'is_trainee' => $request->role === 'trainee' ? true : false,
-            'is_superadmin' => false,
-        ]);
+        // Initialize user variable outside of transaction for scope
+        $user = null;
 
-        if ($request->role !== 'trainee') {
-            $user->assignRole($request->role);
-        }
+        // Use database transaction to ensure atomic operation
+        DB::transaction(function () use ($request, &$user) {
+            // Create user
+            $user = User::create([
+                'firstname' => $request->firstname,
+                'lastname' => $request->lastname,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'terms_conditions' => $request->terms_conditions,
+                'is_trainee' => $request->role === 'trainee' ? true : false,
+                'is_superadmin' => false,
+            ]);
 
+            // Assign role if not a trainee
+            if ($request->role !== 'trainee') {
+                $user->assignRole($request->role);
+            }
+
+            // Create associated trainer profile (adjust if applicable)
+            $user->trainer()->create([
+                'dob' => $request->dob
+            ]);
+        });
+
+        // Fire Registered event and log the user in
         event(new Registered($user));
-
         Auth::login($user);
 
         if (!$request->user()->is_trainee) {

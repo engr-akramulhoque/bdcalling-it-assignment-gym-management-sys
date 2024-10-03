@@ -69,6 +69,21 @@
                 </li>
             @endcan
             <li class="menu-header">Business</li>
+            @can('view trainee')
+                <li class="{{ Request::routeIs('trainee.list') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('trainee.list') }}"><i data-feather="user"></i><span>All
+                            Trainees</span>
+                    </a>
+                </li>
+            @endcan
+            @can('view trainer')
+                <li class="{{ Request::routeIs('trainer.list') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('trainer.list') }}"><i data-feather="user"></i><span>All
+                            Trainers</span>
+                    </a>
+                </li>
+            @endcan
+
             @can('classes')
                 <li
                     class="dropdown {{ Request::routeIs('class.index') ? 'active' : '' }} || {{ Request::routeIs('class.create') ? 'active' : '' }} || {{ Request::routeIs('class.edit') ? 'active' : '' }}">
