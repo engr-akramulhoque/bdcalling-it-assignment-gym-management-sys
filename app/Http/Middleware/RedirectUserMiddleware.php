@@ -16,10 +16,11 @@ class RedirectUserMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!auth('web')->user()->is_customer == true) {
+        if (!auth('web')->user()->is_trainee == true) {
             Auth::logout();
             return to_route('login');
         }
+
         return $next($request);
     }
 }

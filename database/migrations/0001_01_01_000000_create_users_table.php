@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('image_url')->nullable();
             $table->boolean('status')->default(false);
             $table->boolean('terms_conditions')->default(false);
-            $table->boolean('is_customer')->default(true);
+            $table->boolean('is_trainee')->default(true);
             $table->boolean('is_superadmin')->default(false);
             $table->rememberToken();
             $table->timestamps();

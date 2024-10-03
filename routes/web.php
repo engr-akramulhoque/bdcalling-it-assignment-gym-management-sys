@@ -7,9 +7,9 @@ Route::get('/', function () {
 })->name('home');
 
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'trainee'])->group(function () {
     // customer dashboard route
     Route::get('user/dashboard', function () {
         return view('frontend.dashboard');
-    })->name('user.dashboard')->middleware('customer');
+    })->name('trainee.dashboard');
 });
