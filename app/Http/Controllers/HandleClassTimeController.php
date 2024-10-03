@@ -87,7 +87,36 @@ class HandleClassTimeController extends Controller
      */
     public function update(UpdateSessionRequest $request, $id)
     {
-        $classTime = ClassTime::find($id)->update($request->validated());
+        // Find the session being edited
+        $classTime = ClassTime::find($id);
+
+        // Check if there's an overlapping session, excluding the current one
+        $overlappingSession = ClassTime::where('trainer_id', $request->trainer_id)
+            ->where('date', $request->date)
+            ->where('id', '!=', $id) // Exclude the current session from the check
+            ->where(function ($query) use ($request) {
+                $query->whereBetween('start_time', [$request->start_time, $request->end_time])
+                    ->orWhereBetween('end_time', [$request->start_time, $request->end_time])
+                    ->orWhere(function ($query) use ($request) {
+                        $query->where('start_time', '<=', $request->start_time)
+                            ->where('end_time', '>=', $request->end_time);
+                    });
+            })
+            ->exists();
+
+        // If an overlapping session is found, redirect back with an error
+        if ($overlappingSession) {
+            return redirect()->back()->withErrors(['end_time' => 'This time slot is already taken. Please choose a different time.']);
+        }
+
+        // Update the session details
+        $classTime->update([
+            'trainer_id' => $request->trainer_id,
+            'date' => $request->date,
+            'start_time' => $request->start_time,
+            'end_time' => $request->end_time,
+            'capacity' => $request->capacity,
+        ]);
 
         if ($classTime) {
             notify()->success('Session has been updated successfully.', 'topRight');

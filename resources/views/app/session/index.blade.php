@@ -42,7 +42,8 @@
                                                     class="custom-control-label">&nbsp;</label>
                                             </div>
                                         </td>
-                                        <td>{{ $session->trainer_id }}</td>
+                                        <td>{{ $session->trainer?->user?->firstname . ' ' . $session->trainer->user->lastname }}
+                                        </td>
                                         <td>{{ $session->date }}</td>
                                         <td>{{ $session->start_time }}</td>
                                         <td>{{ $session->end_time }}</td>
