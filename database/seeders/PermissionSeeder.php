@@ -29,6 +29,20 @@ class PermissionSeeder extends Seeder
         Permission::firstOrCreate(['name' => 'edit role']);
         Permission::firstOrCreate(['name' => 'delete role']);
 
+        // class section permissions
+        Permission::firstOrCreate(['name' => 'classes']);
+        Permission::firstOrCreate(['name' => 'view class']);
+        Permission::firstOrCreate(['name' => 'create class']);
+        Permission::firstOrCreate(['name' => 'edit class']);
+        Permission::firstOrCreate(['name' => 'delete class']);
+
+        // booking section permissions
+        Permission::firstOrCreate(['name' => 'bookings']);
+        Permission::firstOrCreate(['name' => 'view booking']);
+        Permission::firstOrCreate(['name' => 'create booking']);
+        Permission::firstOrCreate(['name' => 'edit booking']);
+        Permission::firstOrCreate(['name' => 'delete booking']);
+
         // permissions section
         Permission::firstOrCreate(['name' => 'view permission']);
     }

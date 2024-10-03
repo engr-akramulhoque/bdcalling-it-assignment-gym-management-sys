@@ -68,7 +68,30 @@
                     </a>
                 </li>
             @endcan
-            <li class="menu-header">Control</li>
+            <li class="menu-header">Business</li>
+            @can('classes')
+                <li
+                    class="dropdown {{ Request::routeIs('class.index') ? 'active' : '' }} || {{ Request::routeIs('class.create') ? 'active' : '' }} || {{ Request::routeIs('class.edit') ? 'active' : '' }}">
+                    <a href="#"
+                        class="menu-toggle nav-link has-dropdown {{ Request::routeIs('class.index') ? 'toggled' : '' }} || {{ Request::routeIs('class.create') ? 'toggled' : '' }} || {{ Request::routeIs('class.edit') ? 'toggled' : '' }}"><i
+                            data-feather="copy"></i><span>Sessions</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        @can('create class')
+                            <li class="{{ Request::routeIs('class.create') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('class.create') }}">Add Session</a>
+                            </li>
+                        @endcan
+                        @can('classes')
+                            <li
+                                class="{{ Request::routeIs('class.index') ? 'active' : '' }} || {{ Request::routeIs('class.edit') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('class.index') }}">Session</a>
+                            </li>
+                        @endcan
+                    </ul>
+                </li>
+            @endcan
+
             <li class="dropdown">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
                         data-feather="chevrons-down"></i><span>Multilevel</span></a>

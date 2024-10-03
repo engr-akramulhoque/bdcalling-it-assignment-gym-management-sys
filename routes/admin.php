@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HandleClassTimeController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
@@ -58,6 +59,27 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
         Route::middleware('permission:delete user')->group(function () {
             Route::resource('users', UserController::class)->only(['destroy'])
+                ->names(['destroy' => 'destroy']);
+        });
+    });
+
+    // class management routes
+    Route::middleware('permission:classes')->name('class.')->group(function () {
+        Route::resource('classes', HandleClassTimeController::class)->only(['index'])
+            ->names(['index' => 'index']);
+
+        Route::middleware('permission:create user')->group(function () {
+            Route::resource('classes', HandleClassTimeController::class)->only(['create', 'store'])
+                ->names(['create' => 'create', 'store' => 'store']);
+        });
+
+        Route::middleware('permission:edit user')->group(function () {
+            Route::resource('classes', HandleClassTimeController::class)->only(['edit', 'update'])
+                ->names(['edit' => 'edit', 'update' => 'update']);
+        });
+
+        Route::middleware('permission:delete user')->group(function () {
+            Route::resource('classes', HandleClassTimeController::class)->only(['destroy'])
                 ->names(['destroy' => 'destroy']);
         });
     });
