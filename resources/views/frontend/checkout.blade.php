@@ -36,6 +36,13 @@
     <!-- Checkout Section -->
     <section class="py-16 bg-gray-50" id="checkout">
         <div class="container mx-auto text-center">
+            <!-- Error message -->
+            @if (session('error'))
+                <div class="bg-red-500 text-white p-4 mb-4 rounded">
+                    {{ session('error') }}
+                </div>
+            @endif
+
             <h3 class="text-3xl font-bold mb-12 text-gray-800">Checkout</h3>
 
             <form action="{{ route('checkout.process', $session->id) }}" method="POST"
