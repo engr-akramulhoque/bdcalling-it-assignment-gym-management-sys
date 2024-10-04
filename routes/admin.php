@@ -25,6 +25,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/my-session-schedule', [ViewScheduleController::class, 'index'])->name('schedule.index')->middleware('permission:view schedule');
 
+    Route::get('/my-session-schedule/edit/{id}', [ViewScheduleController::class, 'edit'])->name('schedule.edit')->middleware('permission:edit schedule');
+    Route::put('/my-session-schedule/update/{id}', [ViewScheduleController::class, 'update'])->name('schedule.update')->middleware('permission:edit schedule');
+
     Route::get('/permissions', [PermissionController::class, 'index'])->name('permissions.index')->middleware('permission:view permission');
 
     Route::get('/trainee/list', ViewTraineeController::class)->name('trainee.list')->middleware('permission:view trainee');

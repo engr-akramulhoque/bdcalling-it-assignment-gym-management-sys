@@ -39,7 +39,7 @@
             <h3 class="text-3xl font-bold mb-12 text-gray-800">Thank You for Your Booking!</h3>
 
             <div class="max-w-xl mx-auto bg-white p-10 rounded-lg shadow-lg">
-                <p class="text-lg text-gray-700 mb-6">
+                <p class="text-lg text-green-700 mb-6">
                     Your booking for the class with <span class="font-bold">{{ $session->trainer->name }}</span> has
                     been
                     successfully confirmed.

@@ -10,6 +10,7 @@ class ClassTime extends Model
     use HasFactory;
 
     protected $fillable = [
+        'title',
         'trainer_id',
         'date',
         'start_time',

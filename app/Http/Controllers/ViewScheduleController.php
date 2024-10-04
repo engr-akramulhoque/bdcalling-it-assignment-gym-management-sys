@@ -14,4 +14,24 @@ class ViewScheduleController extends Controller
             'schedules' => $schedules
         ]);
     }
+
+    public function edit($id)
+    {
+        $schedule = ClassTime::find($id);
+
+        return view('app.schedule.edit', [
+            'schedule' => $schedule
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $schedule = ClassTime::findOrFail($id);
+
+        $schedule->status = $request->status;
+        $schedule->save();
+
+        notify()->success('Schedule updated successfully', '', 'topRight');
+        return to_route('schedule.index');
+    }
 }

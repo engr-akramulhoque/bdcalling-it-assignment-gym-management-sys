@@ -22,6 +22,7 @@ class StoreSessionRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'title' => 'required|string|max:255',
             'trainer_id' => 'nullable|integer',
             'date' => 'required|date|after_or_equal:today',
             'start_time' => 'required|date_format:H:i',

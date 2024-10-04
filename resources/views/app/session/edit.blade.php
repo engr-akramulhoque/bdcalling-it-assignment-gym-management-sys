@@ -15,6 +15,17 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group">
+                            <label>Class Title</label>
+                            <input type="text" class="form-control" name="title"
+                                value="{{ old('title', $session->title) }}">
+                            @error('title')
+                                <span class="feedback text-danger">
+                                    {{ $message }}
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
                             <label>Trainer</label>
                             <select name="trainer_id" id="trainer_id" class="form-control">
                                 @foreach ($trainers as $trainer)

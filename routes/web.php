@@ -4,6 +4,7 @@ use App\Http\Controllers\CheckAvailableSessionTimeController;
 use App\Http\Controllers\PlaceOrderController;
 use App\Http\Controllers\TraineeDashboardController;
 use App\Http\Controllers\UserBookingController;
+use App\Http\Controllers\ViewScheduleController;
 use App\Models\ClassTime;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;

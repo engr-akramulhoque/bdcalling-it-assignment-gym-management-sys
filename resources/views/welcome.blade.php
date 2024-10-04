@@ -63,7 +63,7 @@
                 @forelse ($classes as $item)
                     <div
                         class="bg-white border border-gray-200 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out">
-                        <h4 class="text-2xl font-semibold text-gray-800 mb-3">Yoga</h4>
+                        <h4 class="text-2xl font-semibold text-gray-800 mb-3">{{ $item->title }}</h4>
                         <p class="text-gray-600 mb-4">Trainer:
                             {{ $item->trainer?->user?->firstname . ' ' . $item->trainer?->user?->lastname }}</p>
 

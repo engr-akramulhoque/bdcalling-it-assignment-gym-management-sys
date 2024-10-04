@@ -45,6 +45,7 @@ class PermissionSeeder extends Seeder
 
         // permissions section
         Permission::firstOrCreate(['name' => 'view schedule']);
+        Permission::firstOrCreate(['name' => 'edit schedule']);
         Permission::firstOrCreate(['name' => 'view trainee']);
         Permission::firstOrCreate(['name' => 'view trainer']);
         Permission::firstOrCreate(['name' => 'view permission']);

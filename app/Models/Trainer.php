@@ -14,6 +14,7 @@ class Trainer extends Model
         'bio',
         'dob',
         'phone',
+        'expertise'
     ];
 
     public function user()

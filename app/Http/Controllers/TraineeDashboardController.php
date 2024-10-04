@@ -16,9 +16,9 @@ class TraineeDashboardController extends Controller
 
         $data = Booking::where('user_id', $request->user()->id)
             ->select(
-                DB::raw("COUNT(CASE WHEN status = 'pending' THEN 1 END) as totalUpcomingBookings"),
-                DB::raw("COUNT(CASE WHEN status = 'complete' THEN 1 END) as totalCompleteBookings"),
-                DB::raw("COUNT(CASE WHEN status = 'expired' THEN 1 END) as totalExpireBookings")
+                DB::raw("COUNT(CASE WHEN status = 'Pending' THEN 1 END) as totalUpcomingBookings"),
+                DB::raw("COUNT(CASE WHEN status = 'Completed' THEN 1 END) as totalCompleteBookings"),
+                DB::raw("COUNT(CASE WHEN status = 'Expired' THEN 1 END) as totalExpireBookings")
             )
             ->first();
 
