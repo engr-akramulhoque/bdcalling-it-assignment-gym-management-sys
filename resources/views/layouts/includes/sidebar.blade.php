@@ -13,6 +13,16 @@
                         data-feather="monitor"></i><span>Dashboard</span></a>
             </li>
 
+            <li class="menu-header">Schedule</li>
+            @can('view schedule')
+                <li class="{{ Request::routeIs('schedule.index') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('schedule.index') }}">
+                        <i data-feather="user"></i>
+                        <span>My Schedule</span>
+                    </a>
+                </li>
+            @endcan
+
             <li class="menu-header">Business</li>
             @can('view trainee')
                 <li class="{{ Request::routeIs('trainee.list') ? 'active' : '' }}">

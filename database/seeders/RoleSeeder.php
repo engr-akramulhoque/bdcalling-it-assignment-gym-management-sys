@@ -14,21 +14,21 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        $role1 = Role::create([
-            'name' => 'trainer',
-        ]);
-        $role1->givePermissionTo([
+        $adminRole = Role::firstOrCreate(['name' => 'administration']);
+        $adminRole->syncPermissions(Permission::all());
+
+        // Create the 'trainer' role and assign specific permissions to it
+        $trainerPermissions = [
             'classes',
             'view class',
             'create class',
             'edit class',
             'delete class',
-        ]);
 
-        $role = Role::create([
-            'name' => 'administration',
-        ]);
+            'view schedule',
+        ];
 
-        $role->givePermissionTo(Permission::all());
+        $trainerRole = Role::firstOrCreate(['name' => 'trainer']);
+        $trainerRole->syncPermissions($trainerPermissions);
     }
 }

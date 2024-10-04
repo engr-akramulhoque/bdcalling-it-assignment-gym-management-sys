@@ -7,6 +7,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ViewScheduleController;
 use App\Http\Controllers\ViewTraineeController;
 use App\Http\Controllers\ViewTrainerController;
 use Illuminate\Support\Facades\Route;
@@ -21,6 +22,8 @@ Route::middleware(['auth'])->group(function () {
         Route::patch('',  'update')->name('update');
         Route::delete('',  'destroy')->name('destroy');
     });
+
+    Route::get('/my-session-schedule', [ViewScheduleController::class, 'index'])->name('schedule.index')->middleware('permission:view schedule');
 
     Route::get('/permissions', [PermissionController::class, 'index'])->name('permissions.index')->middleware('permission:view permission');
 
