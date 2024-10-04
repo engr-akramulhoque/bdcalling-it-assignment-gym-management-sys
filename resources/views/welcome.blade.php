@@ -34,7 +34,8 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="bg-cover bg-center h-screen" style="background-image: url('https://example.com/gym-bg.jpg');">
+    <section class="bg-cover bg-center h-screen"
+        style="background-image: url({{ asset('static/assets/img/banner/hero.jpg') }});">
         <div class="bg-black bg-opacity-50 h-full flex items-center justify-center">
             <div class="text-center text-white">
                 <h2 class="text-4xl font-bold mb-4">Transform Your Body Today</h2>
