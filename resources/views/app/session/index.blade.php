@@ -22,11 +22,13 @@
                                             <label for="checkbox-all" class="custom-control-label">&nbsp;</label>
                                         </div>
                                     </th>
-                                    <th>Trainer ID</th>
+                                    <th>Class Title</th>
+                                    <th>Trainer</th>
                                     <th>Date</th>
                                     <th>Start Time</th>
                                     <th>End Time</th>
                                     <th>Capacity</th>
+                                    <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -42,12 +44,14 @@
                                                     class="custom-control-label">&nbsp;</label>
                                             </div>
                                         </td>
+                                        <td>{{ Str::limit($session->title, 30, '..') }}</td>
                                         <td>{{ $session->trainer?->user?->firstname . ' ' . $session->trainer->user->lastname }}
                                         </td>
                                         <td>{{ $session->date }}</td>
                                         <td>{{ $session->start_time }}</td>
                                         <td>{{ $session->end_time }}</td>
                                         <td>{{ $session->capacity }}</td>
+                                        <td>{{ $session->status }}</td>
                                         <td>
                                             <a href="{{ route('class.edit', ['class' => $session->id]) }}"
                                                 class="btn btn-sm btn-primary">Edit</a>

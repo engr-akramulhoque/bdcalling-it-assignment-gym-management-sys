@@ -110,13 +110,7 @@ class HandleClassTimeController extends Controller
         }
 
         // Update the session details
-        $classTime->update([
-            'trainer_id' => $request->trainer_id,
-            'date' => $request->date,
-            'start_time' => $request->start_time,
-            'end_time' => $request->end_time,
-            'capacity' => $request->capacity,
-        ]);
+        $classTime->update($request->validated());
 
         if ($classTime) {
             notify()->success('Session has been updated successfully.', 'topRight');
