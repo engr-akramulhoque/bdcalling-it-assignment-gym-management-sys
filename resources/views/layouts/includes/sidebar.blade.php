@@ -33,7 +33,8 @@
             @endcan
             @can('view trainer')
                 <li class="{{ Request::routeIs('trainer.list') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('trainer.list') }}"><i data-feather="user"></i><span>All
+                    <a class="nav-link" href="{{ route('trainer.list') }}"><i data-feather="user"></i>
+                        <span>All
                             Trainers</span>
                     </a>
                 </li>
@@ -70,7 +71,7 @@
                                 <a class="nav-link" href="{{ route('class.create') }}">Add Session</a>
                             </li>
                         @endcan
-                        @can('classes')
+                        @can('view class')
                             <li
                                 class="{{ Request::routeIs('class.index') ? 'active' : '' }} || {{ Request::routeIs('class.edit') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ route('class.index') }}">Session</a>
@@ -135,28 +136,6 @@
                     </a>
                 </li>
             @endcan
-
-            <li class="dropdown">
-                <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                        data-feather="chevrons-down"></i><span>Multilevel</span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Menu 1</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="has-dropdown">Menu 2</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Child Menu 1</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="has-dropdown">Child Menu 2</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Child Menu 1</a></li>
-                                    <li><a href="#">Child Menu 2</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#"> Child Menu 3</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
         </ul>
     </aside>
 </div>
