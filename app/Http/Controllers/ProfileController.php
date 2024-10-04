@@ -34,11 +34,12 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        $request->user()->userInfo()->update([
+        $request->user()->trainer()->update([
             'bio' => $request->bio,
             'phone' => $request->phone,
+            'dob' => $request->dob,
+            'expertise' => $request->expertise,
         ]);
-
 
         notify()->success("Profile successfully updated", "Success", "topRight");
         return Redirect::route('profile.edit')->with('status', 'profile-updated');

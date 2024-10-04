@@ -32,21 +32,7 @@
                                 {{ $user->trainer?->bio }}
                             </p>
                         </div>
-                        <div class="mb-2 mt-3">
-                            <div class="text-small font-weight-bold">Follow Hasan On</div>
-                        </div>
-                        <a href="#" class="btn btn-social-icon mr-1 btn-facebook">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="btn btn-social-icon mr-1 btn-twitter">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="btn btn-social-icon mr-1 btn-github">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="#" class="btn btn-social-icon mr-1 btn-instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
+
                         <div class="w-100 d-sm-none"></div>
                     </div>
                 </div>
@@ -71,30 +57,6 @@
                             </span>
                             <span class="float-right text-muted">
                                 {{ $user->trainer?->phone }}
-                            </span>
-                        </p>
-                        <p class="clearfix">
-                            <span class="float-left">
-                                Mail
-                            </span>
-                            <span class="float-right text-muted">
-                                {{ $user->email }}
-                            </span>
-                        </p>
-                        <p class="clearfix">
-                            <span class="float-left">
-                                Facebook
-                            </span>
-                            <span class="float-right text-muted">
-                                <a href="#">John Deo</a>
-                            </span>
-                        </p>
-                        <p class="clearfix">
-                            <span class="float-left">
-                                Twitter
-                            </span>
-                            <span class="float-right text-muted">
-                                <a href="#">@johndeo</a>
                             </span>
                         </p>
                     </div>
@@ -147,17 +109,15 @@
                                     <p class="text-muted">{{ $user->email }}</p>
                                 </div>
                                 <div class="col-md-3 col-6">
-                                    <strong>Location</strong>
+                                    <strong>Date Of Birth</strong>
                                     <br>
-                                    <p class="text-muted">{{ $user->address }}</p>
+                                    <p class="text-muted">{{ $user->trainer?->dob }}</p>
                                 </div>
                             </div>
 
-                            <div class="section-title">Education</div>
+                            <div class="section-title">Expertise</div>
                             <ul>
-                                <li>B.A.,Gujarat University, Ahmedabad,India.</li>
-                                <li>M.A.,Gujarat University, Ahmedabad, India.</li>
-                                <li>P.H.D., Shaurashtra University, Rajkot</li>
+                                <li>{{ $user->trainer?->expertise }}</li>
                             </ul>
                         </div>
                         <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="profile-tab2">

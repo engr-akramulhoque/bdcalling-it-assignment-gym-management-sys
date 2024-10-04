@@ -3,7 +3,7 @@
         <div class="sidebar-brand">
             <a href="{{ route('dashboard') }}"> <img alt="image" src="{{ asset('static/assets/img/logo.png') }}"
                     class="header-logo" />
-                <span class="logo-name">Areia</span>
+                <span class="logo-name">DBCalling IT</span>
             </a>
         </div>
         <ul class="sidebar-menu">

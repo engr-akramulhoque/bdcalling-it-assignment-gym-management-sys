@@ -17,6 +17,7 @@ return new class extends Migration
             $table->longText('bio')->nullable();
             $table->date('dob')->nullable();
             $table->string('phone')->nullable();
+            $table->text('expertise')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
             $table->timestamps();
         });
