@@ -12,7 +12,8 @@ class BookingController extends Controller
      */
     public function index()
     {
-        $bookings = Booking::all();
+        $bookings = Booking::latest()->get();
+
         return view('app.booking.index', compact('bookings'));
     }
 
@@ -61,6 +62,9 @@ class BookingController extends Controller
      */
     public function destroy(Booking $booking)
     {
-        //
+        $booking->delete();
+
+        notify()->success('Booking deleted successfully', "", "topRight");
+        return to_route('booking.index');
     }
 }
