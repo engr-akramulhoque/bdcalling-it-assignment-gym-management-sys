@@ -38,5 +38,3 @@ Route::middleware(['auth', 'trainee'])->group(function () {
 });
 
 Route::post('/class/check-availability', CheckAvailableSessionTimeController::class)->name('class.check_availability');
-
-Route::post('/schedules/update-status', [ViewScheduleController::class, 'updateStatus'])->name('schedules.updateStatus');
