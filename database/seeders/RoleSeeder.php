@@ -20,6 +20,7 @@ class RoleSeeder extends Seeder
         // Create the 'trainer' role and assign specific permissions to it
         $trainerPermissions = [
             'view schedule',
+            'edit schedule',
         ];
 
         $trainerRole = Role::firstOrCreate(['name' => 'trainer']);

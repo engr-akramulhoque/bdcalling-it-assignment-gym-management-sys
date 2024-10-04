@@ -23,6 +23,7 @@ class SessionSeeder extends Seeder
                 'start_time' => '08:00',
                 'end_time' => '09:30',
                 'capacity' => 20,
+                'status' => 'Available',
                 'participated' => 18
             ],
             [
@@ -32,6 +33,7 @@ class SessionSeeder extends Seeder
                 'start_time' => '10:00',
                 'end_time' => '11:30',
                 'capacity' => 15,
+                'status' => 'Available',
                 'participated' => 12
             ],
             [
@@ -41,6 +43,7 @@ class SessionSeeder extends Seeder
                 'start_time' => '17:00',
                 'end_time' => '18:30',
                 'capacity' => 25,
+                'status' => 'Available',
                 'participated' => 20
             ]
         ];

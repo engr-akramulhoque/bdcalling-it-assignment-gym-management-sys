@@ -4,6 +4,7 @@ use App\Http\Controllers\CheckAvailableSessionTimeController;
 use App\Http\Controllers\PlaceOrderController;
 use App\Http\Controllers\TraineeDashboardController;
 use App\Http\Controllers\UserBookingController;
+use App\Http\Controllers\ViewScheduleController;
 use App\Models\ClassTime;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
@@ -37,3 +38,5 @@ Route::middleware(['auth', 'trainee'])->group(function () {
 });
 
 Route::post('/class/check-availability', CheckAvailableSessionTimeController::class)->name('class.check_availability');
+
+Route::post('/schedules/update-status', [ViewScheduleController::class, 'updateStatus'])->name('schedules.updateStatus');

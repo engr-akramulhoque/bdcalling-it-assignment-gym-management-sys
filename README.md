@@ -6,6 +6,16 @@
 
 <p>This Gym Class Scheduling and Membership Management System aims to simplify gym management while enhancing the user experience for members, allowing gyms to scale efficiently while improving operational workflows.</p>
 
+### Features
+
+<p>
+Login and Role-Based Dashboard: <br>
+Separate dashboards for Admin, Trainers, and Trainees.<br>
+Trainees: Profile management and class booking functionality.<br>
+Trainers: View their class schedules.<br>
+Admin: Manage trainers and class schedules.
+</p>
+
 ## Requirements:
 
 ```bash

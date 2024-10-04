@@ -14,4 +14,21 @@ class ViewScheduleController extends Controller
             'schedules' => $schedules
         ]);
     }
+
+    public function edit(Request $request)
+    {
+        $schedules = ClassTime::where('trainer_id', $request->user()->trainer?->id)->latest()->get();
+        return view('app.schedule.index', [
+            'schedules' => $schedules
+        ]);
+    }
+
+    public function updateStatus(Request $request)
+    {
+        $schedule = ClassTime::findOrFail($request->schedule_id);
+        $schedule->status = $request->status;
+        $schedule->save();
+
+        return response()->json(['success' => true]);
+    }
 }
