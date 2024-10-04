@@ -11,7 +11,7 @@
                 <!-- Navbar Links -->
                 <ul class="flex items-center space-x-6">
                     <li>
-                        <a href="#" class="hover:underline">Home</a>
+                        <a href="/" class="hover:underline">Home</a>
                     </li>
 
                     @if (Route::has('login'))
@@ -53,11 +53,12 @@
                 <ul class="space-y-4">
                     <li>
                         <a href="{{ url('user/dashboard') }}"
-                            class="block py-2 px-4 bg-blue-500 text-white rounded-md">Dashboard</a>
+                            class="block py-2 px-4 text-gray-700 hover:bg-gray-200 rounded-md  @if (request()->routeIs('trainee.dashboard')) bg-blue-500 @endif">Dashboard</a>
                     </li>
                     <li>
                         <a href="{{ route('dashboard.bookings') }}"
-                            class="block py-2 px-4 text-gray-700 hover:bg-gray-200 rounded-md">My Bookings</a>
+                            class="block py-2 px-4 text-gray-700 hover:bg-gray-200 rounded-md @if (request()->routeIs('dashboard.bookings')) bg-blue-500 @endif">My
+                            Bookings</a>
                     </li>
                 </ul>
             </aside>

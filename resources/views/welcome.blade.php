@@ -21,7 +21,7 @@
             <nav class="space-x-6">
                 @if (Route::has('login'))
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="text-gray-700 hover:text-red-500">Dashboard</a>
+                        <a href="{{ route('trainee.dashboard') }}" class="text-gray-700 hover:text-red-500">Dashboard</a>
                     @else
                         <a href="{{ route('login') }}" class="text-gray-700 hover:text-red-500">Log in</a>
                         @if (Route::has('register'))
