@@ -123,7 +123,7 @@ Admin: Manage trainers and class schedules.
     Akramul Hoque (Software Engineer)<br>
 </p>
 
-<small><a href="https://docs.google.com/document/d/18Avg4GOdZMQL3KQafBglPVGOLyeP4ogrt_8lrXOdUjk/edit?usp=sharing">Read Documentation</a></small>
+<small><a href="">Read Documentation</a></small>
 
 <span>copyright: <a href="https://github.com/engr-akramulhoque">Engr-Akramul Hoque</a></span>
 
