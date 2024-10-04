@@ -123,9 +123,9 @@ Admin: Manage trainers and class schedules.
     Akramul Hoque (Software Engineer)<br>
 </p>
 
-<small>
+<small> More about this assignment : 
     <a href="https://docs.google.com/document/d/1MWQgBkcmNGP4YECS7BiFEEEVbw4YjXpXtn6m9AiKBro/edit?usp=sharing">Read Documentation</a>
-</small>
+</small> <br>
 
 <span>copyright: <a href="https://github.com/engr-akramulhoque">Engr-Akramul Hoque</a></span>
 
