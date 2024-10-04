@@ -13,7 +13,9 @@
                         data-feather="monitor"></i><span>Dashboard</span></a>
             </li>
 
-            <li class="menu-header">Schedule</li>
+            @if (auth()->user()->hasAnyPermission(['view schedule']))
+                <li class="menu-header">Schedule</li>
+            @endif
             @can('view schedule')
                 <li class="{{ Request::routeIs('schedule.index') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('schedule.index') }}">
@@ -23,7 +25,9 @@
                 </li>
             @endcan
 
-            <li class="menu-header">Business</li>
+            @if (auth()->user()->hasAnyPermission(['bookings', 'classes', 'view trainee', 'view trainer']))
+                <li class="menu-header">Business</li>
+            @endif
             @can('view trainee')
                 <li class="{{ Request::routeIs('trainee.list') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('trainee.list') }}"><i data-feather="user"></i><span>All
@@ -39,7 +43,6 @@
                     </a>
                 </li>
             @endcan
-
             @can('bookings')
                 <li
                     class="dropdown {{ Request::routeIs('booking.index') ? 'active' : '' }} || {{ Request::routeIs('booking.create') ? 'active' : '' }} || {{ Request::routeIs('booking.edit') ? 'active' : '' }}">
@@ -57,7 +60,6 @@
                     </ul>
                 </li>
             @endcan
-
             @can('classes')
                 <li
                     class="dropdown {{ Request::routeIs('class.index') ? 'active' : '' }} || {{ Request::routeIs('class.create') ? 'active' : '' }} || {{ Request::routeIs('class.edit') ? 'active' : '' }}">
@@ -82,7 +84,9 @@
             @endcan
 
 
-            <li class="menu-header">User Management</li>
+            @if (auth()->user()->hasAnyPermission(['users', 'roles', 'view permission']))
+                <li class="menu-header">User Management</li>
+            @endif
             @can('users')
                 <li
                     class="dropdown {{ Request::routeIs('users.index') ? 'active' : '' }} || {{ Request::routeIs('users.create') ? 'active' : '' }} || {{ Request::routeIs('users.edit') ? 'active' : '' }}">
