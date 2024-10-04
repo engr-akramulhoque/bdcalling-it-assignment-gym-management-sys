@@ -76,37 +76,30 @@
                             <tr>
                                 <th class="py-2 px-4 border-b">Booking ID</th>
                                 <th class="py-2 px-4 border-b">Class Name</th>
+                                <th class="py-2 px-4 border-b">Trainer</th>
                                 <th class="py-2 px-4 border-b">Date</th>
                                 <th class="py-2 px-4 border-b">Time</th>
                                 <th class="py-2 px-4 border-b">Status</th>
-                                <th class="py-2 px-4 border-b">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($bookings as $booking)
                                 <tr class="text-gray-700">
                                     <td class="py-2 px-4 border-b">{{ $booking->book_id }}</td>
-                                    <td class="py-2 px-4 border-b">{{ $booking->classTime->name }}</td>
+                                    <td class="py-2 px-4 border-b">{{ $booking->classTime->title }}</td>
+                                    <td class="py-2 px-4 border-b">
+                                        {{ $booking->trainer?->user->firstname . ' ' . $booking->trainer?->user->lastname }}
+                                    </td>
                                     <td class="py-2 px-4 border-b">{{ $booking->classTime->date }}</td>
                                     <td class="py-2 px-4 border-b">{{ $booking->classTime->start_time }} -
                                         {{ $booking->classTime->end_time }}</td>
 
                                     <td class="py-2 px-4 border-b">
                                         <span
-                                            class="px-2 py-1 rounded-full text-sm {{ $booking->status === 'confirmed' ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600' }}">
+                                            class="px-2 py-1 rounded-full text-sm {{ $booking->status === 'Completed' ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600' }}">
                                             {{ ucfirst($booking->status) }}
                                         </span>
                                     </td>
-                                    {{-- <td class="py-2 px-4 border-b">
-                                        <a href="{{ route('bookings.show', $booking->id) }}"
-                                            class="text-blue-500 hover:underline">View</a>
-                                        <form action="{{ route('bookings.cancel', $booking->id) }}" method="POST"
-                                            class="inline-block ml-4">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="text-red-500 hover:underline">Cancel</button>
-                                        </form>
-                                    </td> --}}
                                 </tr>
                             @endforeach
                         </tbody>
