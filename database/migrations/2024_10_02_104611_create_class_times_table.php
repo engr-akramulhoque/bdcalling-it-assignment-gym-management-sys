@@ -18,6 +18,8 @@ return new class extends Migration
             $table->time('start_time');
             $table->time('end_time');
             $table->integer('capacity');
+            $table->string('status')->nullable();
+            $table->integer('participated')->default(0);
             $table->foreign('trainer_id')->references('id')->on('trainers')->onDelete('cascade');
             $table->timestamps();
         });

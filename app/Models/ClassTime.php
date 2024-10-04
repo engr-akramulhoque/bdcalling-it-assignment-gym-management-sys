@@ -15,6 +15,8 @@ class ClassTime extends Model
         'start_time',
         'end_time',
         'capacity',
+        'status',
+        'participated',
     ];
 
     public function trainer()
