@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreBookingRequest;
 use App\Models\Booking;
 use App\Models\ClassTime;
-use Illuminate\Http\Request;
 
 class PlaceOrderController extends Controller
 {
