@@ -87,19 +87,19 @@
 
 <p>
     Admin: <br>
-    <span>Username: admin@gmail.com</span>
+    <span>Username: admin@gmail.com</span> <br>
     <span>Password: password</span>
 </p>
 
 <p>
     Trainer: <br>
-    <span>Username: trainer@gmail.com</span>
+    <span>Username: trainer@gmail.com</span> <br>
     <span>Password: password</span>
 </p>
 
 <p>
     Trainee: <br>
-    <span>Username: trainee@gmail.com</span>
+    <span>Username: trainee@gmail.com</span> <br>
     <span>Password: password</span>
 </p>
 
