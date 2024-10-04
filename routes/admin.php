@@ -12,7 +12,7 @@ use App\Http\Controllers\ViewTraineeController;
 use App\Http\Controllers\ViewTrainerController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'is_active'])->group(function () {
     // admin dashboard route
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
 

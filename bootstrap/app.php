@@ -19,6 +19,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'trainee' =>  \App\Http\Middleware\RedirectUserMiddleware::class,
+            'is_active' => \App\Http\Middleware\CheckStatusMiddleware::class,
 
             // spatie role permission middlewares
             'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
