@@ -59,7 +59,7 @@
             </div>
             <div class="form-group col-md-5 col-12">
                 <label>Phone</label>
-                <input type="tel" class="form-control" name="phone" value="{{ $user->userInfo->phone }}">
+                <input type="tel" class="form-control" name="phone" value="{{ $user->trainer?->phone }}">
                 @error('phone')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -70,7 +70,7 @@
         <div class="row">
             <div class="form-group col-12">
                 <label>Bio</label>
-                <textarea class="form-control summernote-simple" name="bio">{{ $user->userInfo->bio }}</textarea>
+                <textarea class="form-control summernote-simple" name="bio">{{ $user->trainer?->bio }}</textarea>
                 @error('bio')
                     <div class="invalid-feedback">
                         {{ $message }}

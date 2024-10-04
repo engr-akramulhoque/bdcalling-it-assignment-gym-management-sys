@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HandleClassTimeController;
 use App\Http\Controllers\PermissionController;
@@ -86,6 +87,27 @@ Route::middleware(['auth'])->group(function () {
 
         Route::middleware('permission:delete user')->group(function () {
             Route::resource('classes', HandleClassTimeController::class)->only(['destroy'])
+                ->names(['destroy' => 'destroy']);
+        });
+    });
+
+    // booking management routes
+    Route::middleware('permission:bookings')->name('booking.')->group(function () {
+        Route::resource('bookings', BookingController::class)->only(['index'])
+            ->names(['index' => 'index']);
+
+        Route::middleware('permission:create booking')->group(function () {
+            Route::resource('bookings', BookingController::class)->only(['create', 'store'])
+                ->names(['create' => 'create', 'store' => 'store']);
+        });
+
+        Route::middleware('permission:edit booking')->group(function () {
+            Route::resource('bookings', BookingController::class)->only(['edit', 'update'])
+                ->names(['edit' => 'edit', 'update' => 'update']);
+        });
+
+        Route::middleware('permission:delete booking')->group(function () {
+            Route::resource('bookings', BookingController::class)->only(['destroy'])
                 ->names(['destroy' => 'destroy']);
         });
     });

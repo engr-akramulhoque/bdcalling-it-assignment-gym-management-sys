@@ -52,13 +52,12 @@
             <!-- Sidebar -->
             <aside class="w-64 bg-white shadow-lg p-6">
                 <ul class="space-y-4">
-                    <li><a href="#" class="block py-2 px-4 bg-blue-500 text-white rounded-md">Dashboard</a></li>
-                    <li><a href="#" class="block py-2 px-4 text-gray-700 hover:bg-gray-200 rounded-md">Analytics</a>
+                    <li>
+                        <a href="#" class="block py-2 px-4 bg-blue-500 text-white rounded-md">Dashboard</a>
                     </li>
-                    <li><a href="#" class="block py-2 px-4 text-gray-700 hover:bg-gray-200 rounded-md">Projects</a>
-                    </li>
-                    <li><a href="#" class="block py-2 px-4 text-gray-700 hover:bg-gray-200 rounded-md">Tasks</a></li>
-                    <li><a href="#" class="block py-2 px-4 text-gray-700 hover:bg-gray-200 rounded-md">Messages</a>
+                    <li>
+                        <a href="{{ route('dashboard.bookings') }}"
+                            class="block py-2 px-4 text-gray-700 hover:bg-gray-200 rounded-md">My Bookings</a>
                     </li>
                 </ul>
             </aside>

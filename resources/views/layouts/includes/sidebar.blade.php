@@ -13,6 +13,63 @@
                         data-feather="monitor"></i><span>Dashboard</span></a>
             </li>
 
+            <li class="menu-header">Business</li>
+            @can('view trainee')
+                <li class="{{ Request::routeIs('trainee.list') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('trainee.list') }}"><i data-feather="user"></i><span>All
+                            Trainees</span>
+                    </a>
+                </li>
+            @endcan
+            @can('view trainer')
+                <li class="{{ Request::routeIs('trainer.list') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('trainer.list') }}"><i data-feather="user"></i><span>All
+                            Trainers</span>
+                    </a>
+                </li>
+            @endcan
+
+            @can('bookings')
+                <li
+                    class="dropdown {{ Request::routeIs('booking.index') ? 'active' : '' }} || {{ Request::routeIs('booking.create') ? 'active' : '' }} || {{ Request::routeIs('booking.edit') ? 'active' : '' }}">
+                    <a href="#"
+                        class="menu-toggle nav-link has-dropdown {{ Request::routeIs('booking.index') ? 'toggled' : '' }} || {{ Request::routeIs('booking.create') ? 'toggled' : '' }} || {{ Request::routeIs('booking.edit') ? 'toggled' : '' }}"><i
+                            data-feather="copy"></i><span>Bookings</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        @can('view booking')
+                            <li
+                                class="{{ Request::routeIs('booking.index') ? 'active' : '' }} || {{ Request::routeIs('booking.edit') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('booking.index') }}">Bookings</a>
+                            </li>
+                        @endcan
+                    </ul>
+                </li>
+            @endcan
+
+            @can('classes')
+                <li
+                    class="dropdown {{ Request::routeIs('class.index') ? 'active' : '' }} || {{ Request::routeIs('class.create') ? 'active' : '' }} || {{ Request::routeIs('class.edit') ? 'active' : '' }}">
+                    <a href="#"
+                        class="menu-toggle nav-link has-dropdown {{ Request::routeIs('class.index') ? 'toggled' : '' }} || {{ Request::routeIs('class.create') ? 'toggled' : '' }} || {{ Request::routeIs('class.edit') ? 'toggled' : '' }}"><i
+                            data-feather="copy"></i><span>Sessions</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        @can('create class')
+                            <li class="{{ Request::routeIs('class.create') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('class.create') }}">Add Session</a>
+                            </li>
+                        @endcan
+                        @can('classes')
+                            <li
+                                class="{{ Request::routeIs('class.index') ? 'active' : '' }} || {{ Request::routeIs('class.edit') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('class.index') }}">Session</a>
+                            </li>
+                        @endcan
+                    </ul>
+                </li>
+            @endcan
+
 
             <li class="menu-header">User Management</li>
             @can('users')
@@ -66,44 +123,6 @@
                     <a class="nav-link" href="{{ route('permissions.index') }}"><i
                             data-feather="file"></i><span>Permissions</span>
                     </a>
-                </li>
-            @endcan
-            <li class="menu-header">Business</li>
-            @can('view trainee')
-                <li class="{{ Request::routeIs('trainee.list') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('trainee.list') }}"><i data-feather="user"></i><span>All
-                            Trainees</span>
-                    </a>
-                </li>
-            @endcan
-            @can('view trainer')
-                <li class="{{ Request::routeIs('trainer.list') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('trainer.list') }}"><i data-feather="user"></i><span>All
-                            Trainers</span>
-                    </a>
-                </li>
-            @endcan
-
-            @can('classes')
-                <li
-                    class="dropdown {{ Request::routeIs('class.index') ? 'active' : '' }} || {{ Request::routeIs('class.create') ? 'active' : '' }} || {{ Request::routeIs('class.edit') ? 'active' : '' }}">
-                    <a href="#"
-                        class="menu-toggle nav-link has-dropdown {{ Request::routeIs('class.index') ? 'toggled' : '' }} || {{ Request::routeIs('class.create') ? 'toggled' : '' }} || {{ Request::routeIs('class.edit') ? 'toggled' : '' }}"><i
-                            data-feather="copy"></i><span>Sessions</span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        @can('create class')
-                            <li class="{{ Request::routeIs('class.create') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ route('class.create') }}">Add Session</a>
-                            </li>
-                        @endcan
-                        @can('classes')
-                            <li
-                                class="{{ Request::routeIs('class.index') ? 'active' : '' }} || {{ Request::routeIs('class.edit') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ route('class.index') }}">Session</a>
-                            </li>
-                        @endcan
-                    </ul>
                 </li>
             @endcan
 

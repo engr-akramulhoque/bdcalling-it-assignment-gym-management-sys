@@ -29,7 +29,7 @@
                     <div class="text-center">
                         <div class="author-box-description">
                             <p>
-                                {{ $user->userInfo->bio }}
+                                {{ $user->trainer?->bio }}
                             </p>
                         </div>
                         <div class="mb-2 mt-3">
@@ -62,7 +62,7 @@
                                 Birthday
                             </span>
                             <span class="float-right text-muted">
-                                {{ $user->userInfo->dob }}
+                                {{ $user->trainer?->dob }}
                             </span>
                         </p>
                         <p class="clearfix">
@@ -70,7 +70,7 @@
                                 Phone
                             </span>
                             <span class="float-right text-muted">
-                                {{ $user->userInfo->phone }}
+                                {{ $user->trainer?->phone }}
                             </span>
                         </p>
                         <p class="clearfix">
@@ -139,7 +139,7 @@
                                 <div class="col-md-3 col-6 b-r">
                                     <strong>Mobile</strong>
                                     <br>
-                                    <p class="text-muted">{{ $user->userInfo->phone }}</p>
+                                    <p class="text-muted">{{ $user->trainer?->phone }}</p>
                                 </div>
                                 <div class="col-md-3 col-6 b-r">
                                     <strong>Email</strong>
