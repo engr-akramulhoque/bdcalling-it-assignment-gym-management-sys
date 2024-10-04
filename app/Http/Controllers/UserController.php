@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UserRegisterRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Models\Trainer;
@@ -26,15 +27,15 @@ class UserController extends Controller
     }
 
     // store a new user
-    public function store(UserRegisterRequest $request)
+    public function store(StoreUserRequest $request)
     {
         try {
             DB::transaction(function () use ($request) {
                 // create user
-                $user = User::create(array_merge($request->validated(), ['status' => true]));
+                $user = User::create(array_merge($request->validated()));
 
                 // assign user info instance
-                Trainer::create([
+                $user->trainer()->create([
                     "user_id" => $user->id,
                     "dob" => $request->dob,
                 ]);
@@ -68,6 +69,11 @@ class UserController extends Controller
             DB::transaction(function () use ($request, $user) {
                 // update user
                 $user->update($request->validated());
+
+                $user->trainer()->update([
+                    'dob' => $request->dob,
+                    'phone' => $request->phone
+                ]);
                 // remove previous role and assign new role
                 $user->syncRoles($request->role);
             });
