@@ -32,7 +32,7 @@ class UserController extends Controller
         try {
             DB::transaction(function () use ($request) {
                 // create user
-                $user = User::create(array_merge($request->validated()));
+                $user = User::create(array_merge($request->validated(), ['is_trainee' => false]));
 
                 // assign user info instance
                 $user->trainer()->create([
