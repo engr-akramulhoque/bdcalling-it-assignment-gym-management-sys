@@ -85,6 +85,10 @@
 
 ### Login Credentials :
 
+<p>Login URI:
+    <a href="http://127.0.0.1:8000/login" target="_blank">http://127.0.0.1:8000/login</a>
+</p>
+
 <p>
     Admin: <br>
     <span>Username: admin@gmail.com</span> <br>

@@ -36,6 +36,9 @@ class UserSeeder extends Seeder
                 'is_superadmin' => false,
                 'is_trainee' => false,
                 'role' => 'trainer',
+                'trainer_details' => [
+                    'dob' => '12/01/2000',
+                ]
             ],
             [
                 'firstname' => 'Trainee',
@@ -52,7 +55,15 @@ class UserSeeder extends Seeder
 
         // Create users and assign roles
         foreach ($users as $userData) {
-            $user = User::factory()->create(collect($userData)->except('role')->toArray());
+            // Create the user
+            $user = User::factory()->create(collect($userData)->except('role', 'trainer_details')->toArray());
+
+            // Check if trainer details exist and create the trainer profile
+            if (isset($userData['trainer_details'])) {
+                $user->trainer()->create([
+                    'dob' => $userData['trainer_details']['dob']
+                ]);
+            }
 
             // Assign role if defined
             if ($userData['role']) {
