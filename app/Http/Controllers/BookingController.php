@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateBookingRequest;
 use App\Models\Booking;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -58,9 +59,12 @@ class BookingController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Booking $booking)
+    public function update(UpdateBookingRequest $request, Booking $booking)
     {
-        //
+        $booking->update($request->validated());
+
+        notify()->success('Booking updated successfully', "", "topRight");
+        return to_route('booking.index');
     }
 
     /**

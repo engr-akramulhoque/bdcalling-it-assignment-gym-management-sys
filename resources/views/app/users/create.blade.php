@@ -93,11 +93,12 @@
                                     @enderror
                                 </div>
                             </div>
+
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <label class="form-label">Address*</label>
-                                    <textarea name="address" cols="30" rows="3" class="form-control no-resize">{{ old('address') }}</textarea>
-                                    @error('address')
+                                    <label class="form-label">Phone Number*</label>
+                                    <input type="text" name="phone" class="form-control">
+                                    @error('phone')
                                         <span class="feedback text-danger">
                                             {{ $message }}
                                         </span>
@@ -114,22 +115,26 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="help-info">The warning step will show up if age is less than 18</div>
                             </div>
-                        </fieldset>
-                        <h5>Terms &amp; Conditions</h5>
-                        <fieldset>
                             <div class="form-group form-float">
+                                <label class="form-label">Status*</label>
                                 <div class="form-line">
-                                    <label class="form-label">Profile Image</label>
-                                    <input type="file" name="image" class="form-control">
-                                    @error('image')
+                                    <!-- Hidden field for unchecked status -->
+                                    <input type="hidden" name="status" value="0">
+                                    <input type="checkbox" name="status" value="1">
+                                    <label class="form-label">Active</label>
+                                    @error('status')
                                         <span class="feedback text-danger">
                                             {{ $message }}
                                         </span>
                                     @enderror
                                 </div>
                             </div>
+
+                        </fieldset>
+                        <h5>Terms &amp; Conditions</h5>
+                        <fieldset>
+
                             <input id="acceptTerms-2" name="terms_conditions" type="checkbox">
                             <label for="acceptTerms-2">I agree with the Terms and Conditions.</label>
                             @error('terms_conditions')
