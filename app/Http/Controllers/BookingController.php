@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -46,7 +47,12 @@ class BookingController extends Controller
      */
     public function edit(Booking $booking)
     {
-        //
+        $trainers = User::role('trainer')->get(['id', 'firstname', 'lastname']);
+
+        return view('app.booking.edit', [
+            'booking' => $booking,
+            'trainers' => $trainers,
+        ]);
     }
 
     /**

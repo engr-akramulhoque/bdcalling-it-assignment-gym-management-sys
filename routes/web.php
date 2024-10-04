@@ -27,7 +27,7 @@ Route::get('/', function () {
 })->name('home');
 
 
-Route::middleware(['auth', 'trainee'])->group(function () {
+Route::middleware(['auth', 'trainee', 'is_active'])->group(function () {
     // customer dashboard route
     Route::get('user/dashboard', TraineeDashboardController::class)->name('trainee.dashboard');
 
