@@ -46,7 +46,6 @@
             </div>
         </nav>
 
-
         <!-- Main content -->
         <div class="flex flex-1">
             <!-- Sidebar -->
@@ -71,16 +70,16 @@
                 <!-- Stats Cards -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div class="bg-white p-6 rounded-lg shadow-lg">
-                        <h3 class="text-lg font-medium text-gray-700">Total Projects</h3>
-                        <p class="text-4xl font-bold text-blue-600">12</p>
+                        <h3 class="text-lg font-medium text-gray-700">Upcoming Sessions</h3>
+                        <p class="text-4xl font-bold text-blue-600">{{ $data->totalUpcomingBookings }}</p>
                     </div>
                     <div class="bg-white p-6 rounded-lg shadow-lg">
-                        <h3 class="text-lg font-medium text-gray-700">Tasks Completed</h3>
-                        <p class="text-4xl font-bold text-blue-600">37</p>
+                        <h3 class="text-lg font-medium text-gray-700">Completed Sessions</h3>
+                        <p class="text-4xl font-bold text-blue-600">{{ $data->totalCompleteBookings }}</p>
                     </div>
                     <div class="bg-white p-6 rounded-lg shadow-lg">
-                        <h3 class="text-lg font-medium text-gray-700">Messages</h3>
-                        <p class="text-4xl font-bold text-blue-600">5</p>
+                        <h3 class="text-lg font-medium text-gray-700">Expired Sessions</h3>
+                        <p class="text-4xl font-bold text-blue-600">{{ $data->totalExpireBookings }}</p>
                     </div>
                 </div>
             </main>

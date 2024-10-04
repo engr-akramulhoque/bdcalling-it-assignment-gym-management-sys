@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CheckAvailableSessionTimeController;
 use App\Http\Controllers\PlaceOrderController;
+use App\Http\Controllers\TraineeDashboardController;
 use App\Http\Controllers\UserBookingController;
 use App\Models\ClassTime;
 use Carbon\Carbon;
@@ -27,9 +28,8 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'trainee'])->group(function () {
     // customer dashboard route
-    Route::get('user/dashboard', function () {
-        return view('frontend.dashboard');
-    })->name('trainee.dashboard');
+    Route::get('user/dashboard', TraineeDashboardController::class)->name('trainee.dashboard');
+
     Route::get('user/my-bookings', UserBookingController::class)->name('dashboard.bookings');
 
     Route::get('/user/checkout/{id}', [PlaceOrderController::class, 'checkout'])->name('session.checkout');
