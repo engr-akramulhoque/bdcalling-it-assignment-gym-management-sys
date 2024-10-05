@@ -10,6 +10,7 @@
 
     <!-- Tailwind CSS CDN -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
 </head>
 
 <body class="font-roboto bg-gray-100 text-gray-800">
