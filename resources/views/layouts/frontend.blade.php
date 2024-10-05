@@ -10,6 +10,9 @@
 
     <!-- Tailwind CSS CDN -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    {{-- <link href="{{ asset('build/assets/app-CKTn2O9R.css') }}" rel="stylesheet">
+    <script src="{{ asset('build/assets/app-DLzyN2yJ.js') }}"></script> --}}
 </head>
 
 <body class="font-roboto bg-gray-100 text-gray-800">
